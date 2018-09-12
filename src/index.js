@@ -1,27 +1,44 @@
 import readlineSync from 'readline-sync';
-import even from './even';
+import even from './games/even';
+import calc from './games/calc';
 
-const brainGames = () => {
-  console.log('Welcome to the Brain Games!');
-  const getUserName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${getUserName}.`);
+const rules = {
+  brainEvenRule: 'Answer "yes" if number even otherwise answer "no".\n',
+  brainCalcRule: 'What is the result of the expression?\n',
 };
 
-const brainEven = () => {
-  console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
-  const getUserName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${getUserName}.`);
-  let game = even();
-  for (let i = 0; i < 2; i += 1) {
-    if (game.compare) {
+const getUserName = () => readlineSync.question('May I have your name?\n');
+const greetings = name => `Hello, ${name}!\n`;
+const congrats = name => `Congratulations, ${name}!`;
+
+const game = (fun, userName) => {
+  for (let i = 0; i < 3; i += 1) {
+    const data = fun();
+    if (data.compare) {
       console.log('Correct!');
-      game = even();
     } else {
-      const looseMessage = `'${game.userAnswer}' is wrong answer ;(. Correct answer was '${game.answer}'.  \nLet's try again, ${getUserName}!`;
+      const looseMessage = `'${data.userAnswer}' is wrong answer ;(. Correct answer was '${data.answer}'.  \nLet's try again, ${userName}!`;
       return console.log(looseMessage);
     }
   }
-  return console.log(`Congratulations, ${getUserName}`);
+  return console.log(congrats(userName));
 };
 
-export { brainGames, brainEven };
+console.log('Welcome to the Brain Games!');
+
+
+const brainEven = () => {
+  console.log(rules.brainEvenRule);
+  const userName = getUserName();
+  console.log(greetings((userName)));
+  game(even, userName);
+};
+
+const brainCalc = () => {
+  console.log(rules.brainCalcRule);
+  const userName = getUserName();
+  console.log(greetings(userName));
+  game(calc, userName);
+};
+
+export { brainEven, brainCalc };
