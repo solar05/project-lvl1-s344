@@ -1,7 +1,4 @@
 import readlineSync from 'readline-sync';
-import even from './games/even';
-import calc from './games/calc';
-import gcd from './games/gcd';
 
 const rules = {
   brainEvenRule: 'Answer "yes" if number even otherwise answer "no".\n',
@@ -16,38 +13,21 @@ const getUserName = () => {
 };
 const congrats = name => `Congratulations, ${name}!`;
 
-const game = (fun, userName) => {
+const gameCore = (game, rule) => {
+  console.log(`Welcome to the Brain Games!\n${rules[rule]}`);
+  const userName = getUserName();
   for (let i = 0; i < 3; i += 1) {
-    const data = fun();
-    if (data.compare) {
+    const { question, answer } = game();
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === answer) {
       console.log('Correct!');
     } else {
-      const looseMessage = `'${data.userAnswer}' is wrong answer ;(. Correct answer was '${data.answer}'.  \nLet's try again, ${userName}!`;
+      const looseMessage = `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.  \nLet's try again, ${userName}!`;
       return console.log(looseMessage);
     }
   }
   return console.log(congrats(userName));
 };
 
-console.log('Welcome to the Brain Games!');
-
-
-const brainEven = () => {
-  console.log(rules.brainEvenRule);
-  const userName = getUserName();
-  game(even, userName);
-};
-
-const brainCalc = () => {
-  console.log(rules.brainCalcRule);
-  const userName = getUserName();
-  game(calc, userName);
-};
-
-const brainGcd = () => {
-  console.log(rules.brainGcdRule);
-  const userName = getUserName();
-  game(gcd, userName);
-};
-
-export { brainEven, brainCalc, brainGcd };
+export default gameCore;

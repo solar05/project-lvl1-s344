@@ -1,17 +1,20 @@
-import readlineSync from 'readline-sync';
+import gameCore from '..';
+import getRandomNum from '../generateRandomNum';
 
-const getRandomNum = multiplier => Math.floor(Math.random() * multiplier);
+const executeOperation = [(a, b) => a + b, (a, b) => a - b, (a, b) => a * b];
+// создание массива функций для для выполнения выражения
+const operations = ['+', '-', '*'];
 
-export default () => {
-  const data = {};
-  const operations = ['+', '-', '*'];
-  const operands = [getRandomNum(10), getRandomNum(10)].sort((a, b) => b - a);
-  // к operands, рандомим два числа, затем сортируем их по убыванию
-  const currOperation = operations[getRandomNum(3)];
-  const question = `${operands[0]} ${currOperation} ${operands[1]}`;
-  console.log(`Question: ${question}`);
-  data.userAnswer = readlineSync.question('Your answer: ');
-  data.answer = eval(question);
-  data.compare = parseInt(data.userAnswer, 10) === data.answer;
+const calc = () => {
+  const firstNum = getRandomNum(1, 50);
+  const secondNum = getRandomNum(1, 50);
+  const currOperation = getRandomNum(0, 2);
+  const data = {
+    question: `${firstNum} ${operations[currOperation]} ${secondNum}`,
+    answer: `${executeOperation[currOperation](firstNum, secondNum)}`,
+  };
   return data;
 };
+
+gameCore(calc, 'brainCalcRule');
+export default calc;

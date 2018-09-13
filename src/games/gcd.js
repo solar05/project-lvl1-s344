@@ -1,20 +1,24 @@
-import readlineSync from 'readline-sync';
+import gameCore from '..';
+import getRandomNum from '../generateRandomNum';
 
-const gcd = (firstNum, secondNum) => {
+const getDiv = (firstNum, secondNum) => {
   if (!secondNum) {
     return firstNum;
   }
-  return gcd(secondNum, firstNum % secondNum);
+  return getDiv(secondNum, firstNum % secondNum);
 };
 
-const getRandomNum = multiplier => Math.floor(Math.random() * multiplier);
 
-export default () => {
-  const data = {};
-  const operands = [getRandomNum(100), getRandomNum(100)].sort((a, b) => b - a);
-  console.log(`Question: ${operands[0]} ${operands[1]}`);
-  data.userAnswer = readlineSync.question('Your answer: ');
-  data.answer = gcd(operands[0], operands[1]);
-  data.compare = parseInt(data.userAnswer, 10) === data.answer;
+const gcd = () => {
+  const firstNum = getRandomNum(1, 50);
+  const secondNum = getRandomNum(1, 50);
+  const data = {
+    question: `${firstNum} ${secondNum}`,
+    answer: `${getDiv(firstNum, secondNum)}`,
+  };
   return data;
 };
+
+gameCore(gcd, 'brainGcdRule');
+
+export default gcd;
