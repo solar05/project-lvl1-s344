@@ -1,13 +1,13 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
-const rule = 'Find the greatest common divisor of given numbers.\n';
+const rule = 'Find the greatest common divisor of given numbers.';
 
-const getDiv = (firstNum, secondNum) => {
+const getGcd = (firstNum, secondNum) => {
   if (!secondNum) {
     return firstNum;
   }
-  return getDiv(secondNum, firstNum % secondNum);
+  return getGcd(secondNum, firstNum % secondNum);
 };
 
 
@@ -16,7 +16,7 @@ const gcd = () => {
   const secondNum = getRandomNum(1, 50);
   const data = {
     question: `${firstNum} ${secondNum}`,
-    answer: `${getDiv(firstNum, secondNum)}`,
+    answer: `${getGcd(firstNum, secondNum)}`,
   };
   return data;
 };

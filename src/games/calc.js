@@ -1,7 +1,7 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
-const rule = 'What is the result of the expression?\n';
+const rule = 'What is the result of the expression?';
 
 const executeOperation = [(a, b) => a + b, (a, b) => a - b, (a, b) => a * b];
 const operations = ['+', '-', '*'];

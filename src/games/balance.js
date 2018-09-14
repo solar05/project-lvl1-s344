@@ -1,7 +1,7 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
-const rule = 'Balance the given number.\n';
+const rule = 'Balance the given number.';
 
 const getNum = (num) => {
   const arrayOfNum = num.toString().split('');

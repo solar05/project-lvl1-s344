@@ -1,7 +1,7 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
-const rule = 'Answer "yes" if number even otherwise answer "no".\n';
+const rule = 'Answer "yes" if number even otherwise answer "no".';
 const evenCheck = number => number % 2 === 0;
 
 const even = () => {
