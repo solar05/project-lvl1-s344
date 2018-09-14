@@ -15,3 +15,6 @@ https://asciinema.org/a/KlXF0KDCyUamRMVKYrJRBl2Wu
 
 ##brain-gcd
 https://asciinema.org/a/K7hyXd7Ba32dMo0rNDwiVHqTu
+
+##brain-balance
+https://asciinema.org/a/Mgp64QWFmfSMF2WVzqPk7ehfA

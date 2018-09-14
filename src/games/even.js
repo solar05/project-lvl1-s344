@@ -1,6 +1,7 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
+const rule = 'Answer "yes" if number even otherwise answer "no".\n';
 const evenCheck = number => number % 2 === 0;
 
 const even = () => {
@@ -12,5 +13,5 @@ const even = () => {
   return data;
 };
 
-gameCore(even, 'brainEvenRule');
+gameCore(even, rule);
 export default even;

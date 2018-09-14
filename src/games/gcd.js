@@ -1,6 +1,8 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
+const rule = 'Find the greatest common divisor of given numbers.\n';
+
 const getDiv = (firstNum, secondNum) => {
   if (!secondNum) {
     return firstNum;
@@ -19,6 +21,6 @@ const gcd = () => {
   return data;
 };
 
-gameCore(gcd, 'brainGcdRule');
+gameCore(gcd, rule);
 
 export default gcd;

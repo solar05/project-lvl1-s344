@@ -1,10 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const rules = {
-  brainEvenRule: 'Answer "yes" if number even otherwise answer "no".\n',
-  brainCalcRule: 'What is the result of the expression?\n',
-  brainGcdRule: 'Find the greatest common divisor of given numbers.\n',
-};
 
 const getUserName = () => {
   const userName = readlineSync.question('May I have your name?\n');
@@ -14,7 +9,7 @@ const getUserName = () => {
 const congrats = name => `Congratulations, ${name}!`;
 
 const gameCore = (game, rule) => {
-  console.log(`Welcome to the Brain Games!\n${rules[rule]}`);
+  console.log(`Welcome to the Brain Games!\n${rule}`);
   const userName = getUserName();
   for (let i = 0; i < 3; i += 1) {
     const { question, answer } = game();

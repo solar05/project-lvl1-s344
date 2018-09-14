@@ -1,8 +1,9 @@
 import gameCore from '..';
 import getRandomNum from '../generateRandomNum';
 
+const rule = 'What is the result of the expression?\n';
+
 const executeOperation = [(a, b) => a + b, (a, b) => a - b, (a, b) => a * b];
-// создание массива функций для для выполнения выражения
 const operations = ['+', '-', '*'];
 
 const calc = () => {
@@ -16,5 +17,5 @@ const calc = () => {
   return data;
 };
 
-gameCore(calc, 'brainCalcRule');
+gameCore(calc, rule);
 export default calc;
