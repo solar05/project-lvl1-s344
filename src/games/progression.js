@@ -7,17 +7,18 @@ const progressionLenght = 10;
 const progression = () => {
   const startNumber = getRandomNum(1, 9);
   const step = getRandomNum(1, 15);
-  const progrArr = [startNumber];
-  for (let i = 0; i < progressionLenght; i += 1) {
-    const nextNumber = progrArr[i] + step;
-    progrArr.push(nextNumber);
+  const currentProgr = [];
+  for (let counter = 1; counter < progressionLenght; counter += 1) {
+    const nexNumber = startNumber + step * counter;
+    currentProgr.push(nexNumber);
   }
   const missingElem = getRandomNum(2, 9);
-  const answer = `${progrArr[missingElem]}`;
-  progrArr[missingElem] = '..';
+  const answer = `${currentProgr[missingElem]}`;
+  currentProgr[missingElem] = '..';
+  const question = currentProgr.join(' ');
   const data = {
     answer,
-    question: progrArr.join(' '),
+    question,
   };
   return data;
 };

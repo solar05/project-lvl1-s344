@@ -3,22 +3,22 @@ import getRandomNum from '../generateRandomNum';
 
 const rule = 'Is this number is prime?';
 
-const checkPrime = (number) => {
+const isPrime = (number) => {
   if (number === 1) {
-    return 'no';
+    return false;
   }
   for (let divisor = 2; divisor < number; divisor += 1) {
     if (number % divisor === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
 const prime = () => {
   const randommNum = getRandomNum(1, 100);
   const data = {
-    answer: checkPrime(randommNum),
+    answer: isPrime(randommNum) ? 'yes' : 'no',
     question: randommNum,
   };
   return data;
