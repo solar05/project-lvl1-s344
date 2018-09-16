@@ -5,13 +5,10 @@ const rule = 'Is this number is prime?';
 
 const isPrime = (number) => {
   const iter = (num, divider) => {
-    if (num / 2 < divider) {
+    if (divider > num / 2) {
       return true;
     }
-    if (num % divider === 0) {
-      return false;
-    }
-    return iter(num, divider + 1);
+    return num % divider ? iter(num, divider + 1) : false;
   };
   return iter(number, 2);
 };
